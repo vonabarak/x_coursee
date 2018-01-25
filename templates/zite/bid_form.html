@@ -1,0 +1,42 @@
+{% load material_form %}
+{% load static l10n i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'material/includes/material_css.html' %}
+
+    <style type="text/css">
+        html, body { background: #eee; }
+    </style>
+
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="container expand-on-small-only">
+        <div class="row valign change-form">
+            <div class="col s12 m8 offset-m2 l8 offset-l2">
+                <form method="POST" class="viewform" role="form">
+                    <div class="card form-card">
+                        <div class="card-content">
+                            <div class="card-title black-text">{{ view.title }}</div>
+                            {% csrf_token %}
+                            {% form form=form layout=view.layout %}{% endform %}
+                        </div>
+                        <div class="card-action row">
+                            <div class="col s12 right-align">
+                                <button class="btn" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+</body>
+</html>

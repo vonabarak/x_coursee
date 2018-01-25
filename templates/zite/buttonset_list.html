@@ -1,0 +1,21 @@
+{% extends 'material/frontend/base_site.html' %}
+{% block extrahead %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet"/>
+{% endblock %}
+{% block content %}
+    <div style="margin: 12px">
+    {% for i in object_list %}
+        <div style="border: black">
+            <h3>{{ i }}</h3>
+            <div>
+                {% for j in i.buttons.all %}
+                    <button class="btn btn-large">
+                        <p style="margin: 0; font-size: small">{{ j }}</p>
+{#                        <span style="font-size: xx-small">{{ j.url }}</span>#}
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
